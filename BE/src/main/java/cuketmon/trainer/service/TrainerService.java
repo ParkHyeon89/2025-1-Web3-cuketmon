@@ -27,7 +27,7 @@ public class TrainerService {
             Trainer trainer = new Trainer(name, new Toy(), new Feed(), INIT_WIN);
             trainerRepository.save(trainer);
         }
-    }
+    }x
 
     @Transactional
     public Integer getRemainingToys(String name) {
@@ -49,6 +49,10 @@ public class TrainerService {
                 .orElseThrow(() -> new IllegalArgumentException("[ERROR]: 해당 트레이너를 찾을 수 없습니다."));
 
         trainer.addWin();
+    }
+
+    public List<Trainer> getTop5TrainersByWin() {
+        return trainerRepository.findTop5ByOrderByWinDesc();
     }
 
 }

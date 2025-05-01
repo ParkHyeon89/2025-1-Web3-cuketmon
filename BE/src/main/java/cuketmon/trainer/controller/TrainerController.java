@@ -40,4 +40,9 @@ public class TrainerController {
         return trainerService.getRemainingFeeds(trainerName);
     }
 
+    @GetMapping("/ranking")
+    public ResponseEntity<List<Trainer>> getTrainerRanking() {
+        return ResponseEntity.ok(trainerService.getTop5TrainersByWin());
+    }
+
 }
